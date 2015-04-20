@@ -1,5 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe EmailAddress, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+feature 'user inputs email address' do 
+  let(:email_address) {EmailAddress.new(address: "wwww.g@hotmail.com")}
+
+  scenario 'that is valid' do 
+    expect(email_address).to be_valid
+  end
+
+  scenario 'that is invalid' do 
+    email_address.address = nil
+    expect(email_address).to_not be_valid
+  end
 end
